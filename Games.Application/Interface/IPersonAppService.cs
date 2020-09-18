@@ -3,11 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Games.Domain.Repositories
+namespace Games.Application.Interface
 {
-   public  interface IGameRepository : IRepositoryBase<Game>
+    public interface IPersonAppService : IAppServiceBase<Person>
     {
-       
 
     }
 }

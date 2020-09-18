@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Games.Domain.Entities
 {
@@ -9,6 +8,7 @@ namespace Games.Domain.Entities
         public string Description { get; private set; }
         public bool Active { get; private set; }
         public DateTime Created { get; private set; }
+        public DateTime? Updated { get; private set; }
     }
 }
 

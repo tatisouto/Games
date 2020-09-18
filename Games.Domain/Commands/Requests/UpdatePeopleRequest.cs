@@ -7,19 +7,19 @@ using System.Threading;
 
 namespace Games.Domain.Commands.Requests
 {
-    public class CreatePeopleRequest : ICommand
+    public class UpdatePeopleRequest : ICommand
     {
+        public UpdatePeopleRequest() { }
 
-        public CreatePeopleRequest() { }
-
-        public CreatePeopleRequest(string name, string phone, DateTime created)
+        public UpdatePeopleRequest(Guid id, string name, string phone, DateTime created)
         {
+            id = Id;
             Name = name;
             Phone = phone;
             Created = created;
+        }
 
-        }      
-
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
         public DateTime Created { get; set; }

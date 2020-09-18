@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Games.Domain.Commands.Contracts
+namespace Games.Domain.Interfaces.Repositories
 {
-    public interface ICommandResult
+    public interface IUnitOfWork
     {
-
     }
 }

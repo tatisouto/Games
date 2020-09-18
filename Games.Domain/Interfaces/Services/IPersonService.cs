@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Games.Domain.Repositories
+namespace Games.Domain.Interfaces.Services
 {
-   public interface IGameLendRepository : IRepositoryBase<GameLend>
+    public interface IPersonService : IServiceBase<Person>
     {
     }
 }

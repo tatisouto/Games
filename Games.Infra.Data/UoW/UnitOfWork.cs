@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Games.Domain.Commands.Contracts
+namespace Games.Infra.Data.UoW
 {
-    public interface ICommandResult
+    public class UnitOfWork
     {
 
     }

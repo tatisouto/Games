@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Games.Domain.Repositories
+namespace Games.Domain.Interfaces.Services
 {
-
-    public interface IRepositoryBase<TEntity> where TEntity : class
+    public interface IServiceBase<TEntity> where TEntity : class
     {
         void Add(TEntity obj);
         TEntity GetById(Guid id);
         IEnumerable<TEntity> GetAll();
         void Update(TEntity obj);
-        void Remove(TEntity obj);
+        void Remove(Guid id);
         void Dispose();
     }
-
 }
