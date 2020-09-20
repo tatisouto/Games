@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Games.Domain", "Games.Domain\Games.Domain.csproj", "{2DC2A57C-EB1D-4424-8756-795B412947DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Games.Infra.Data", "Games.Infra.Data\Games.Infra.Data.csproj", "{2C856932-4F47-42D2-A1CE-6D4E0DBB49A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Games.Infra.Data", "Games.Infra.Data\Games.Infra.Data.csproj", "{2C856932-4F47-42D2-A1CE-6D4E0DBB49A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Games.Services.Api", "Games.Services.Api\Games.Services.Api.csproj", "{AEEC62FD-F04B-4C6E-B4A5-D26934E30A18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Games.Services.Api", "Games.Services.Api\Games.Services.Api.csproj", "{AEEC62FD-F04B-4C6E-B4A5-D26934E30A18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Games.Application", "Games.Application\Games.Application.csproj", "{9A2AEBD6-1D2D-46AF-B6D4-5DD81DA311E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Games.Application", "Games.Application\Games.Application.csproj", "{9A2AEBD6-1D2D-46AF-B6D4-5DD81DA311E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
