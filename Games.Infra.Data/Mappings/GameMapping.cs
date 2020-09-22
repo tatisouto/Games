@@ -6,10 +6,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Games.Infra.Data.Mappings
 {
-    public class GameMapping : EntityTypeConfiguration<Game>
+    public class GameMapping : IEntityTypeConfiguration<Game>
     {
-        public override void Map(EntityTypeBuilder<Game> builder)
+        public void Configure(EntityTypeBuilder<Game> builder)
         {
+            builder.Property(c => c.Id)
+               .HasColumnName("Id");
 
             builder.Property(e => e.Description)
             .HasColumnType("varchar(150)")
@@ -26,7 +28,7 @@ namespace Games.Infra.Data.Mappings
 
             builder.Property(e => e.Updated)
             .HasColumnType("datetime")
-            .IsRequired();          
+            .IsRequired();
 
             builder.ToTable("Games");
         }

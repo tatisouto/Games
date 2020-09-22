@@ -1,18 +1,18 @@
 ﻿using Games.Domain.Interfaces.Repositories;
 using Games.Infra.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
+using NetDevPack.Data;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Games.Infra.Data.Repository
 {
     public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
     {
 
-        protected GamesContext Db;
-        protected DbSet<TEntity> DbSet;
+        protected readonly GamesContext Db;
+        protected readonly DbSet<TEntity> DbSet;
 
 
         public RepositoryBase(GamesContext context)
@@ -20,40 +20,37 @@ namespace Games.Infra.Data.Repository
             Db = context;
             DbSet = Db.Set<TEntity>();
         }
-        public void Add(TEntity obj)
+
+        public IUnitOfWork UnitOfWork => Db;
+
+        public void Add(TEntity entity)
         {
-            DbSet.Add(obj);
+            DbSet.Add(entity);
         }
 
-        public void Dispose()
+        public async Task<IEnumerable<TEntity>> GetAll()
         {
-            Db.Dispose();
+            return await DbSet.ToListAsync();
         }
 
-        public IEnumerable<TEntity> GetAll()
+        //public async Task<TEntity> GetByEmail(string email)
+        //{
+        //    new NotImplementedException;
+        //}
+
+        public async Task<TEntity> GetById(Guid id)
         {
-            return DbSet.AsNoTracking().ToList();
+            return await DbSet.FindAsync(id);
         }
 
-        public TEntity GetById(Guid id)
+        public void Remove(TEntity entity)
         {
-            return DbSet.Find(id);
+            DbSet.Remove(entity);
         }
 
-        public void Remove(Guid id)
+        public void Update(TEntity entity)
         {
-            DbSet.Remove(DbSet.Find(id));
-        }
-
-        public int SaveChanges()
-        {
-            return Db.SaveChanges();
-            
-        }
-
-        public void Update(TEntity obj)
-        {
-            DbSet.Update(obj);
+            DbSet.Update(entity);
         }
     }
 }

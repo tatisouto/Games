@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Games.Application.Interface;
+using Games.Application.Interfaces;
 using Games.Domain.Entities;
 using Games.Domain.Interfaces.Repositories;
 using Microsoft.AspNetCore.Authorization;

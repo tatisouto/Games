@@ -2,6 +2,7 @@
 using Games.Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Games.Domain.Services
 {
@@ -19,14 +20,14 @@ namespace Games.Domain.Services
             _repository.Add(obj);
         }
 
-        public TEntity GetById(Guid id)
+        public async Task<TEntity> GetByIdAsync(Guid id) 
         {
-            return _repository.GetById(id);
+            return await _repository.GetById(id);
         }
 
         public IEnumerable<TEntity> GetAll()
         {
-            return _repository.GetAll();
+            return (IEnumerable<TEntity>)_repository.GetAll();
         }
 
         public void Update(TEntity obj)
@@ -34,14 +35,24 @@ namespace Games.Domain.Services
             _repository.Update(obj);
         }
 
-        public void Remove(Guid id)
+        public void Remove(TEntity obj)
         {
-            _repository.Remove(id);
+            _repository.Remove(obj);
         }
 
         public void Dispose()
         {
-            _repository.Dispose();
+            throw new NotImplementedException();
         }
+
+        TEntity IServiceBase<TEntity>.GetByIdAsync(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        //public void Dispose()
+        //{
+        //   // _repository.Dispose();
+        //}
     }
 }

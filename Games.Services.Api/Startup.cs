@@ -1,5 +1,3 @@
-using Games.Application;
-using Games.Application.Interface;
 using Games.Infra.Data.Contexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,7 +25,10 @@ namespace Games.Services.Api
         {
             services.AddControllers();
 
-            services.AddScoped<IGameAppService, GameAppService>();
+          
+
+
+            //services.AddScoped<IGameAppService, GameAppService>();
             //services.AddTransient<IGameLendAppService, GameLendAppService>();
             //services.AddTransient<IPersonAppService, PersonAppService>();
 

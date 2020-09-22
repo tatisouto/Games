@@ -5,10 +5,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Games.Infra.Data.Mappings
 {
-    public class PersonMapping : EntityTypeConfiguration<Person>
+    public class PersonMapping : IEntityTypeConfiguration<Person>
     {
-        public override void Map(EntityTypeBuilder<Person> builder)
+        public void Configure(EntityTypeBuilder<Person> builder)
         {
+            builder.Property(c => c.Id)
+              .HasColumnName("Id");
 
             builder.Property(e => e.Name)
             .HasColumnType("varchar(150)")

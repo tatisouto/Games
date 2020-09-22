@@ -18,9 +18,11 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.8" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="3.1.8" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.8" />
+    <PackageReference Include="NetDevPack.Identity" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Games.Domain.Core\Games.Domain.Core.csproj" />
     <ProjectReference Include="..\Games.Domain\Games.Domain.csproj" />
   </ItemGroup>
 

@@ -7,10 +7,10 @@ namespace Games.Domain.Interfaces.Services
     public interface IServiceBase<TEntity> where TEntity : class
     {
         void Add(TEntity obj);
-        TEntity GetById(Guid id);
+        TEntity GetByIdAsync(Guid id);
         IEnumerable<TEntity> GetAll();
         void Update(TEntity obj);
-        void Remove(Guid id);
-        void Dispose();
+        void Remove(TEntity obj);
+        //void Dispose();
     }
 }

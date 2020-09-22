@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using FluentValidation.Results;
 
-namespace Games.Application.Interface
+namespace Games.Application.Interfaces
 {
    public  interface IAppServiceBase<TEntity> where TEntity : class
     {
-        void Add(TEntity obj);
-        TEntity GetById(Guid id);
-        IEnumerable<TEntity> GetAll();
-        void Update(TEntity obj);
-        void Remove(Guid id);
-        void Dispose();
+
+        Task<IEnumerable<TEntity>> GetAll();
+        Task<TEntity> GetById(Guid id);
+
+        Task<ValidationResult> Register(TEntity obj);
+        Task<ValidationResult> Update(TEntity obj);
+        Task<ValidationResult> Remove(Guid id);  
+        
     }
 }
 

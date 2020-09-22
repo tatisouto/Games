@@ -1,20 +1,16 @@
 ﻿using Games.Domain.Entities;
-using Games.Infra.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Games.Infra.Data.Mappings
 {
-    public class GameLendMapping : EntityTypeConfiguration<GameLend>
+    public class GameLendMapping : IEntityTypeConfiguration<GameLend>
     {
-        public override void Map(EntityTypeBuilder<GameLend> builder)
-        {                      
-           
+        public void Configure(EntityTypeBuilder<GameLend> builder)
+        {
 
-            builder.HasKey(e => e.Id);
+            builder.Property(c => c.Id)
+               .HasColumnName("Id");
 
             builder.Property(e => e.LendOn)
             .HasColumnType("datetime")
@@ -33,10 +29,10 @@ namespace Games.Infra.Data.Mappings
 
             builder.ToTable("GameLend");
 
-           
 
 
-         
+
+
 
 
 
