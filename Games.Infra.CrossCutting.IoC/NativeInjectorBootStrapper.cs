@@ -27,44 +27,42 @@ namespace Games.Infra.CrossCutting.IoC
             services.AddScoped<IMediatorHandler, InMemoryBus>();
 
             // Application
-            //services.AddScoped<IPersonAppService, PersonAppService>();
-            //services.AddScoped<IGameAppService, GameAppService>();
-            //services.AddScoped<IGameLendAppService, GameLendAppService>();
+            services.AddScoped<IPersonAppService, PersonAppService>();
+            services.AddScoped<IGameAppService, GameAppService>();
+            services.AddScoped<IGameLendAppService, GameLendAppService>();
 
             // Domain - Events
-            //services.AddScoped<INotificationHandler<PersonRegisteredEvent>, PersonEventHandler>();
-            //services.AddScoped<INotificationHandler<PersonUpdatedEvent>, PersonEventHandler>();
-            //services.AddScoped<INotificationHandler<PersonRemovedEvent>, PersonEventHandler>();
+            services.AddScoped<INotificationHandler<PersonRegisteredEvent>, PersonEventHandler>();
+            services.AddScoped<INotificationHandler<PersonUpdatedEvent>, PersonEventHandler>();
+            services.AddScoped<INotificationHandler<PersonRemovedEvent>, PersonEventHandler>();
 
-            //services.AddScoped<INotificationHandler<GameRegisteredEvent>, GameEventHandler>();
-            //services.AddScoped<INotificationHandler<GameUpdatedEvent>, GameEventHandler>();
-            //services.AddScoped<INotificationHandler<GameRemovedEvent>, GameEventHandler>();
+            services.AddScoped<INotificationHandler<GameRegisteredEvent>, GameEventHandler>();
+            services.AddScoped<INotificationHandler<GameUpdatedEvent>, GameEventHandler>();
+            services.AddScoped<INotificationHandler<GameRemovedEvent>, GameEventHandler>();
 
-            //services.AddScoped<INotificationHandler<GameLendRegisteredEvent>, GameLendEventHandler>();
-            //services.AddScoped<INotificationHandler<GameLendUpdatedEvent>, GameLendEventHandler>();
-            //services.AddScoped<INotificationHandler<GameLendRemovedEvent>, GameLendEventHandler>();
+            services.AddScoped<INotificationHandler<GameLendRegisteredEvent>, GameLendEventHandler>();
+            services.AddScoped<INotificationHandler<GameLendUpdatedEvent>, GameLendEventHandler>();
+            services.AddScoped<INotificationHandler<GameLendRemovedEvent>, GameLendEventHandler>();
 
             // Domain - Commands
-            //services.AddScoped<IRequestHandler<RegisterNewPersonCommand, ValidationResult>, PersonCommandHandler>();
-            //services.AddScoped<IRequestHandler<UpdatePersonCommand, ValidationResult>, PersonCommandHandler>();
-            //services.AddScoped<IRequestHandler<RemovePersonCommand, ValidationResult>, PersonCommandHandler>();
+            services.AddScoped<IRequestHandler<RegisterNewPersonCommand, ValidationResult>, PersonCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdatePersonCommand, ValidationResult>, PersonCommandHandler>();
+            services.AddScoped<IRequestHandler<RemovePersonCommand, ValidationResult>, PersonCommandHandler>();
 
 
-            //services.AddScoped<IRequestHandler<RegisterNewGameCommand, ValidationResult>, GameCommandHandler>();
-            //services.AddScoped<IRequestHandler<UpdateGameCommand, ValidationResult>, GameCommandHandler>();
-            //services.AddScoped<IRequestHandler<RemoveGameCommand, ValidationResult>, GameCommandHandler>();
+            services.AddScoped<IRequestHandler<RegisterNewGameCommand, ValidationResult>, GameCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateGameCommand, ValidationResult>, GameCommandHandler>();
+            services.AddScoped<IRequestHandler<RemoveGameCommand, ValidationResult>, GameCommandHandler>();
 
-            //services.AddScoped<IRequestHandler<RegisterNewGameLendCommand, ValidationResult>, GameLendCommandHandler>();
-            //services.AddScoped<IRequestHandler<UpdateGameLendCommand, ValidationResult>, GameLendCommandHandler>();
-            //services.AddScoped<IRequestHandler<RemoveGameLendCommand, ValidationResult>, GameLendCommandHandler>();           
+            services.AddScoped<IRequestHandler<RegisterNewGameLendCommand, ValidationResult>, GameLendCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateGameLendCommand, ValidationResult>, GameLendCommandHandler>();
+            services.AddScoped<IRequestHandler<RemoveGameLendCommand, ValidationResult>, GameLendCommandHandler>();
 
             // Infra - Data
 
-            //services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
-
-            //services.AddScoped<IPersonRepository, PersonRepository>();
-            //services.AddScoped<IGameRepository, GameRepository>();
-            //services.AddScoped<IGameLendRepository, GameLendRepository>();
+            services.AddScoped<IPersonRepository, PersonRepository>();
+            services.AddScoped<IGameRepository, GameRepository>();
+            services.AddScoped<IGameLendRepository, GameLendRepository>();
             services.AddScoped<GamesContext>();
 
             // Infra - Data EventSourcing

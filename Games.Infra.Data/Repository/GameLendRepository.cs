@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Games.Infra.Data.Repository
 {
-    public class GameLendRepository : IRepositoryBase<GameLend>
+    public class GameLendRepository : IGameLendRepository
     {
 
         protected readonly GamesContext Db;
@@ -48,6 +48,9 @@ namespace Games.Infra.Data.Repository
             return await DbSet.FindAsync(id);
         }
 
-
+        public void Dispose()
+        {
+            Db.Dispose();
+        }
     }
 }

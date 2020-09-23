@@ -4,13 +4,12 @@ using System.Text;
 
 namespace Games.Application.EventSourcedNormalizers
 {
-    public class PersonHistoryData
+    public class GameHistoryData
     {
         public string Action { get; set; }
         public string Id { get; set; }
-        public string Name { get; set; }
-        public string Phone { get;  set; }
-        public string Email { get;  set; }       
+        public string Description { get; set; }
+        public string Active { get; set; }      
         public string Timestamp { get; set; }
         public string Who { get; set; }
     }

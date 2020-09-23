@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Games.Services.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("v1/persons")]
     [ApiController]
     public class PersonController : ControllerBase
     {
@@ -21,7 +21,7 @@ namespace Games.Services.Api.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("person")]
+        [HttpGet]
         public async Task<IEnumerable<PersonViewModel>> Get()
         {
             return await _personAppService.GetAll();
