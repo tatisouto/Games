@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Games.Services.Api", "Games
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Games.Application", "Games.Application\Games.Application.csproj", "{9A2AEBD6-1D2D-46AF-B6D4-5DD81DA311E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Games.Domain.Core", "Games.Domain.Core\Games.Domain.Core.csproj", "{B5CA97E1-6611-492F-B60E-851B806D4A4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Games.Domain.Core", "Games.Domain.Core\Games.Domain.Core.csproj", "{B5CA97E1-6611-492F-B60E-851B806D4A4E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{AB18526C-9344-4FB2-96AA-93C8BBE28BC5}"
 EndProject
@@ -27,15 +27,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1 - Data", "5.1 - Data", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2 - CrossCuting", "5.2 - CrossCuting", "{6754FEEE-0AA4-4D47-9495-0CD4D8803FA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.Infra.CrossCutting.Bus", "Game.Infra.CrossCutting.Bus\Game.Infra.CrossCutting.Bus.csproj", "{0E2CAAE8-224A-41FB-82A9-A85B59AF16F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Game.Infra.CrossCutting.Bus", "Game.Infra.CrossCutting.Bus\Game.Infra.CrossCutting.Bus.csproj", "{0E2CAAE8-224A-41FB-82A9-A85B59AF16F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Games.Infra.CrossCutting.Identity", "Games.Infra.CrossCutting.Identity\Games.Infra.CrossCutting.Identity.csproj", "{803AF925-1782-473D-8CFF-7873BBE79F63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Games.Infra.CrossCutting.Identity", "Games.Infra.CrossCutting.Identity\Games.Infra.CrossCutting.Identity.csproj", "{803AF925-1782-473D-8CFF-7873BBE79F63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Games.Infra.CrossCutting.IoC", "Games.Infra.CrossCutting.IoC\Games.Infra.CrossCutting.IoC.csproj", "{828A3912-FA7A-4D15-BB57-FCFE7D6D74E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Games.Infra.CrossCutting.IoC", "Games.Infra.CrossCutting.IoC\Games.Infra.CrossCutting.IoC.csproj", "{828A3912-FA7A-4D15-BB57-FCFE7D6D74E0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Tests", "6 - Tests", "{DB94C929-C50D-497B-8383-E3D82A79C139}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Games.Tests", "Games.Tests\Games.Tests.csproj", "{F01041B5-7907-43E1-A17D-7F38D4B49584}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Games.Tests", "Games.Tests\Games.Tests.csproj", "{F01041B5-7907-43E1-A17D-7F38D4B49584}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Games.UI.Web", "Games.UI.Web\Games.UI.Web.csproj", "{5EC6B9F9-7E44-43AA-826C-05360F8881BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,10 @@ Global
 		{F01041B5-7907-43E1-A17D-7F38D4B49584}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F01041B5-7907-43E1-A17D-7F38D4B49584}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F01041B5-7907-43E1-A17D-7F38D4B49584}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EC6B9F9-7E44-43AA-826C-05360F8881BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EC6B9F9-7E44-43AA-826C-05360F8881BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EC6B9F9-7E44-43AA-826C-05360F8881BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EC6B9F9-7E44-43AA-826C-05360F8881BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,6 +101,7 @@ Global
 		{803AF925-1782-473D-8CFF-7873BBE79F63} = {6754FEEE-0AA4-4D47-9495-0CD4D8803FA4}
 		{828A3912-FA7A-4D15-BB57-FCFE7D6D74E0} = {6754FEEE-0AA4-4D47-9495-0CD4D8803FA4}
 		{F01041B5-7907-43E1-A17D-7F38D4B49584} = {DB94C929-C50D-497B-8383-E3D82A79C139}
+		{5EC6B9F9-7E44-43AA-826C-05360F8881BF} = {AB18526C-9344-4FB2-96AA-93C8BBE28BC5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7E989E14-DCEC-4849-BDCE-6C9909520823}
