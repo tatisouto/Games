@@ -1,8 +1,7 @@
-﻿using Games.Application.AutoMapper;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using AutoMapper;
-
+using Games.Application.AutoMapper;
 
 namespace Games.Services.Api.Configurations
 {

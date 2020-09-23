@@ -10,7 +10,17 @@ namespace Games.Infra.Data.Mappings
         {
 
             builder.Property(c => c.Id)
-               .HasColumnName("Id");
+            .HasColumnName("Id");
+
+           
+            builder.Property(e => e.IdPerson)
+               .HasColumnType("uniqueidentifier")
+               .IsRequired();
+
+            builder.Property(e => e.IdGame)
+              .HasColumnType("uniqueidentifier")
+              .IsRequired();
+
 
             builder.Property(e => e.LendOn)
             .HasColumnType("datetime")
@@ -18,24 +28,17 @@ namespace Games.Infra.Data.Mappings
 
             builder.Property(e => e.ReturnedOn)
            .HasColumnType("datetime")
-           .IsRequired();
+           .IsRequired(false);
 
             builder.Property(e => e.Created)
-                .HasColumnType("datetime")
-                .IsRequired();
+           .HasColumnType("datetime")
+           .IsRequired();
 
             builder.Property(e => e.Updated)
-            .HasColumnType("datetime");
+            .HasColumnType("datetime")
+            .IsRequired(false);
 
-            builder.ToTable("GameLend");
-
-
-
-
-
-
-
-
+        
         }
     }
 }

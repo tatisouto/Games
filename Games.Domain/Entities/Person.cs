@@ -7,8 +7,9 @@ namespace Games.Domain.Entities
     public class Person : Entity, IAggregateRoot
     {
 
-        public Person(string name, string phone, string email, DateTime created, DateTime? updated)
+        public Person(Guid id, string name, string phone, string email, DateTime created, DateTime? updated)
         {
+            Id = id;
             Name = name;
             Phone = phone;
             Email = email;
@@ -21,9 +22,8 @@ namespace Games.Domain.Entities
         public string Email { get; private set; }
         public DateTime Created { get; private set; }
         public DateTime? Updated { get; private set; }
+        public virtual IEnumerable<GameLend> GameLend { get; private set; }
 
-
-       
 
     }
 }

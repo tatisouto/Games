@@ -1,21 +1,36 @@
-using Games.Infra.Data.Contexts;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
-
-
+using NetDevPack.Identity.User;
+using Games.Infra.CrossCutting.Identity;
+using Games.Services.Api.Configurations;
 
 namespace Games.Services.Api
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        //public Startup(IConfiguration configuration)
+        //{
+        //    Configuration = configuration;
+        //}
+
+        public Startup(IHostEnvironment env)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", true, true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true);
+
+            //if (env.IsDevelopment())
+            //{
+            //    builder.AddUserSecrets<Startup>();
+            //}
+
+            builder.AddEnvironmentVariables();
+            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -23,21 +38,28 @@ namespace Games.Services.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // WebAPI Config
             services.AddControllers();
 
+            // Setting DBContexts
+            services.AddDatabaseConfiguration(Configuration);
+
+            // ASP.NET Identity Settings & JWT
+            services.AddApiIdentityConfiguration(Configuration);
+
+            // Interactive AspNetUser (logged in)
+            services.AddAspNetUserConfiguration();
+
+            // AutoMapper Settings
+            services.AddAutoMapperConfiguration();           
+
+            // Adding MediatR for Domain Events and Notifications
+            services.AddMediatR(typeof(Startup));
+
+            // .NET Native DI Abstraction
+            services.AddDependencyInjectionConfiguration();
+
           
-
-
-            //services.AddScoped<IGameAppService, GameAppService>();
-            //services.AddTransient<IGameLendAppService, GameLendAppService>();
-            //services.AddTransient<IPersonAppService, PersonAppService>();
-
-            services.AddDbContext<GamesContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddControllersWithViews();
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

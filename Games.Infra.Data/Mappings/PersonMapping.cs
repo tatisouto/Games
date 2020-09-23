@@ -16,6 +16,10 @@ namespace Games.Infra.Data.Mappings
             .HasColumnType("varchar(150)")
             .IsRequired();
 
+            builder.Property(e => e.Email)
+          .HasColumnType("varchar(150)")
+          .IsRequired();
+
             builder.Property(e => e.Phone)
             .HasColumnType("varchar(11)")
             .IsRequired();
@@ -27,9 +31,9 @@ namespace Games.Infra.Data.Mappings
 
             builder.Property(e => e.Updated)
             .HasColumnType("datetime")
-            .IsRequired();
+            .IsRequired(false);
 
-            builder.ToTable("Persons");
+            //builder.ToTable("Persons");
         }
     }
 }

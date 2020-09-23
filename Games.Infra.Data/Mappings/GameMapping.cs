@@ -21,16 +21,15 @@ namespace Games.Infra.Data.Mappings
             .HasColumnType("bit")
             .IsRequired();
 
-
             builder.Property(e => e.Created)
                 .HasColumnType("datetime")
                 .IsRequired();
 
             builder.Property(e => e.Updated)
             .HasColumnType("datetime")
-            .IsRequired();
+            .IsRequired(false);
 
-            builder.ToTable("Games");
+
         }
     }
 }

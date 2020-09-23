@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <UserSecretsId>0ee69133-b27d-4e12-ae90-f4c67d830134</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,12 +24,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="3.1.8" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Games.Application\Games.Application.csproj" />
+    <ProjectReference Include="..\Games.Infra.CrossCutting.Identity\Games.Infra.CrossCutting.Identity.csproj" />
     <ProjectReference Include="..\Games.Infra.CrossCutting.IoC\Games.Infra.CrossCutting.IoC.csproj" />
-    <ProjectReference Include="..\Games.Infra.Data\Games.Infra.Data.csproj" />
   </ItemGroup>
 
 

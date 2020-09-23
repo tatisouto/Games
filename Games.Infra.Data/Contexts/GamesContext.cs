@@ -24,7 +24,6 @@ namespace Games.Infra.Data.Contexts
             ChangeTracker.AutoDetectChangesEnabled = false;
         }
 
-
         public DbSet<Game> Games { get; set; }
         public DbSet<GameLend> GameLends { get; set; }
         public DbSet<Person> Persons { get; set; }
@@ -38,24 +37,24 @@ namespace Games.Infra.Data.Contexts
 
             foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(
               e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
-                property.SetColumnType("varchar(100)");
+                property.SetColumnType("varchar(150)");
 
             modelBuilder.ApplyConfiguration(new GameMapping());
             modelBuilder.ApplyConfiguration(new PersonMapping());
             modelBuilder.ApplyConfiguration(new GameLendMapping());
 
+            modelBuilder.Entity<GameLend>()
+            .HasOne(bc => bc.Games)
+            .WithMany(b => b.GameLend)
+            .HasForeignKey(bc => bc.IdGame);
+
+            modelBuilder.Entity<GameLend>()
+            .HasOne(bc => bc.Persons)
+            .WithMany(b => b.GameLend)
+            .HasForeignKey(bc => bc.IdPerson);
+
 
             base.OnModelCreating(modelBuilder);
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
-
-            optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));
         }
 
         public async Task<bool> Commit()
