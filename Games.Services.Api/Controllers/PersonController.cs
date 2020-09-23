@@ -44,9 +44,9 @@ namespace Games.Services.Api.Controllers
         }
 
         [HttpPut("")]
-        public async Task<IActionResult> Put([FromBody] PersonViewModel gameViewModel)
+        public async Task<IActionResult> Put([FromBody] PersonViewModel personViewModel)
         {
-            return !ModelState.IsValid ? CustomResponse(ModelState) : CustomResponse(await _personAppService.Update(gameViewModel));
+            return !ModelState.IsValid ? CustomResponse(ModelState) : CustomResponse(await _personAppService.Update(personViewModel));
         }
 
 

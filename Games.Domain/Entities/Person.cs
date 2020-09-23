@@ -6,7 +6,10 @@ namespace Games.Domain.Entities
 {
     public class Person : Entity, IAggregateRoot
     {
+        protected Person()
+        {
 
+        }
         public Person(Guid id, string name, string phone, string email, DateTime created, DateTime? updated)
         {
             Id = id;

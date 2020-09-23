@@ -14,8 +14,6 @@ namespace Games.Domain.Commands.Person
             Created = created;
         }
 
-
-
         public override bool IsValid()
         {
             ValidationResult = new RegisterNewPersonCommandValidation().Validate(this);

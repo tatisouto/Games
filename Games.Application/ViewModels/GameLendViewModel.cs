@@ -15,5 +15,8 @@ namespace Games.Application.ViewModels
         public DateTime? ReturnedOn { get; private set; }
         public DateTime Created { get; private set; }
         public DateTime? Updated { get; private set; }
+
+        public virtual PersonViewModel Persons { get; private set; }
+        public virtual GameViewModel Games { get; private set; }
     }
 }

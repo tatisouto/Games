@@ -12,6 +12,8 @@ namespace Games.Domain.Interfaces.Repositories
         Task<Game> GetById(Guid id);      
         Task<IEnumerable<Game>> GetAll();
 
+        Task<Game> GetByDescription(string description);
+
         void Add(Game game);
         void Update(Game game);
         void Remove(Game game);

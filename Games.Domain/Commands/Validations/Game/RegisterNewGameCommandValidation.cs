@@ -7,5 +7,10 @@ namespace Games.Domain.Commands.Validations.Game
 {
     public class RegisterNewGameCommandValidation : GameValidation<RegisterNewGameCommand>
     {
+        public RegisterNewGameCommandValidation()
+        {
+            ValidateId();
+            ValidateDescription();
+        }
     }
 }

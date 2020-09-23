@@ -37,7 +37,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Tests", "6 - Tests", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Games.Tests", "Games.Tests\Games.Tests.csproj", "{F01041B5-7907-43E1-A17D-7F38D4B49584}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Games.UI.Web", "Games.UI.Web\Games.UI.Web.csproj", "{5EC6B9F9-7E44-43AA-826C-05360F8881BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Games.UI.Web", "Games.UI.Web\Games.UI.Web.csproj", "{5EC6B9F9-7E44-43AA-826C-05360F8881BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

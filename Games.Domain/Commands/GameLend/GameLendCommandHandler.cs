@@ -5,7 +5,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using FluentValidation.Results;
-
+using Games.Domain.Events.Person;
 
 namespace Games.Domain.Commands.GameLend
 {
@@ -21,17 +21,41 @@ namespace Games.Domain.Commands.GameLend
             _gameLendRepository = gameLendRepository;
         }
 
-        public Task<ValidationResult> Handle(RegisterNewGameLendCommand request, CancellationToken cancellationToken)
+        public async Task<ValidationResult> Handle(RegisterNewGameLendCommand message, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            if (!message.IsValid()) return message.ValidationResult;
+
+            var gameLend = new GameLend(Guid.NewGuid(), message.IdGame, message.IdPerson, message.LendOn, message.ReturnedOn, message.Created, message.Updated);
+
+
+            if (await _gameLendRepository.GameIsAvailable(gameLend.IdGame) == false)
+            {
+                AddError("Game já emprestado.");
+                return ValidationResult;
+            }
+
+            gameLend.AddDomainEvent(new GameLendRegisteredEvent(gameLend.IdPerson, gameLend.IdGame, gameLend.LendOn, gameLend.ReturnedOn, gameLend.Created, gameLend.Updated));
+
+            _gameLendRepository.Add(gameLend);
+
+            return await Commit(_gameLendRepository.UnitOfWork);
         }
 
-        public Task<ValidationResult> Handle(UpdateGameLendCommand request, CancellationToken cancellationToken)
+        public async Task<ValidationResult> Handle(UpdateGameLendCommand message, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            if (!message.IsValid()) return message.ValidationResult;
+
+            var gameLend = new GameLend(Guid.NewGuid(), message.IdGame, message.IdPerson, message.LendOn, message.ReturnedOn, message.Created, message.Updated);
+
+
+            gameLend.AddDomainEvent(new GameLendRegisteredEvent(gameLend.IdPerson, gameLend.IdGame, gameLend.LendOn, gameLend.ReturnedOn, gameLend.Created, gameLend.Updated));
+
+            _gameLendRepository.Add(gameLend);
+
+            return await Commit(_gameLendRepository.UnitOfWork);
         }
 
-        public Task<ValidationResult> Handle(RemoveGameLendCommand request, CancellationToken cancellationToken)
+        public Task<ValidationResult> Handle(RemoveGameLendCommand message, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

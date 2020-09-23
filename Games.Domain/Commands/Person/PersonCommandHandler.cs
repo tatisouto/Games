@@ -5,6 +5,10 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using FluentValidation.Results;
+using Games.Domain.Events;
+using Games.Domain.Interfaces;
+using Games.Domain.Entities;
+using Games.Domain.Events.Person;
 
 namespace Games.Domain.Commands.Person
 {
@@ -20,19 +24,63 @@ namespace Games.Domain.Commands.Person
             _personRepository = personRepository;
         }
 
-        public Task<ValidationResult> Handle(RegisterNewPersonCommand request, CancellationToken cancellationToken)
+        public async Task<ValidationResult> Handle(RegisterNewPersonCommand message, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            if (!message.IsValid()) return message.ValidationResult;
+
+            var person = new Person(Guid.NewGuid(), message.Name, message.Phone, message.Email, message.Created, message.Updated);
+
+
+            if (await _personRepository.GetByEmail(person.Email) != null)
+            {
+                AddError("Pessoa já foi cadastrada.");
+                return ValidationResult;
+            }
+
+            person.AddDomainEvent(new PersonRegisteredEvent(person.Name, person.Phone, person.Email, person.Created));
+
+            _personRepository.Add(person);
+
+            return await Commit(_personRepository.UnitOfWork);
         }
 
-        public Task<ValidationResult> Handle(UpdatePersonCommand request, CancellationToken cancellationToken)
+        public async Task<ValidationResult> Handle(UpdatePersonCommand message, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            if (!message.IsValid()) return message.ValidationResult;
+
+            var person = new Person(Guid.NewGuid(), message.Name, message.Phone, message.Email, message.Created, message.Updated);
+
+
+            if (await _personRepository.GetByEmail(person.Email) != null)
+            {
+                AddError("Pessoa já foi cadastrada.");
+                return ValidationResult;
+            }
+
+            person.AddDomainEvent(new PersonRegisteredEvent(person.Name, person.Phone, person.Email, person.Created));
+
+            _personRepository.Update(person);
+
+            return await Commit(_personRepository.UnitOfWork);
         }
 
-        public Task<ValidationResult> Handle(RemovePersonCommand request, CancellationToken cancellationToken)
+        public async Task<ValidationResult> Handle(RemovePersonCommand message, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            if (!message.IsValid()) return message.ValidationResult;
+
+            var person = await _personRepository.GetById(message.Id);
+
+            if (person is null)
+            {
+                AddError("Pessoa não cadastrada.");
+                return ValidationResult;
+            }
+
+            person.AddDomainEvent(new PersonRemovedEvent(message.Id));
+
+            _personRepository.Remove(person);
+
+            return await Commit(_personRepository.UnitOfWork);
         }
     }
 }

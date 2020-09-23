@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using NetDevPack.Data;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Games.Infra.Data.Repository
@@ -46,11 +48,16 @@ namespace Games.Infra.Data.Repository
         public async Task<Game> GetById(Guid id)
         {
             return await DbSet.FindAsync(id);
-        }      
+        }
 
         public void Dispose()
         {
             Db.Dispose();
+        }
+
+        public async Task<Game> GetByDescription(string description)
+        {
+            return await DbSet.AsNoTracking().FirstOrDefaultAsync(c => c.Description == description);
         }
     }
 }

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using NetDevPack.Data;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Games.Infra.Data.Repository
@@ -46,6 +47,17 @@ namespace Games.Infra.Data.Repository
         public async Task<GameLend> GetById(Guid id)
         {
             return await DbSet.FindAsync(id);
+        }
+
+        public async Task<GameLend> GetByGameId(Guid idGame)
+        {
+            return await DbSet.AsNoTracking().FirstOrDefaultAsync(c => c.IdGame == idGame);
+        }
+
+        public bool GameIsAvailable(Guid idGame)
+        {
+            return DbSet.AsNoTracking().Any(c => c.IdGame == idGame && c.ReturnedOn == null);
+
         }
 
         public void Dispose()
