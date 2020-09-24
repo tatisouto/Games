@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="9.2.2" />
+    <PackageReference Include="MediatR" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.8" />
+    <PackageReference Include="NetDevPack" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Game.Infra.CrossCutting.Bus\Game.Infra.CrossCutting.Bus.csproj" />
+    <ProjectReference Include="..\Games.Application\Games.Application.csproj" />
+    <ProjectReference Include="..\Games.Domain\Games.Domain.csproj" />
+    <ProjectReference Include="..\Games.Infra.Data\Games.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>
