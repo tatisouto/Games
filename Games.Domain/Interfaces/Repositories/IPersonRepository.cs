@@ -1,4 +1,4 @@
-﻿using Games.Domain.Entities;
+﻿using Games.Domain.Models;
 using NetDevPack.Data;
 using System;
 using System.Collections.Generic;
@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Games.Domain.Interfaces.Repositories
 {
-   public interface IPersonRepository : IRepository<Person>
+   public interface IPersonRepository : IRepository<PersonModel>
     {
-        Task<Person> GetById(Guid id);
-        Task<Person> GetByEmail(string email);
-        Task<IEnumerable<Person>> GetAll();
+        Task<PersonModel> GetById(Guid id);
+        Task<PersonModel> GetByEmail(string email);
+        Task<IEnumerable<PersonModel>> GetAll();
 
-        void Add(Person person);
-        void Update(Person person);
-        void Remove(Person person);
+        void Add(PersonModel person);
+        void Update(PersonModel person);
+        void Remove(PersonModel person);
     }
 }

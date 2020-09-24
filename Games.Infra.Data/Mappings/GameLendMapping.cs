@@ -1,12 +1,12 @@
-﻿using Games.Domain.Entities;
+﻿using Games.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Games.Infra.Data.Mappings
 {
-    public class GameLendMapping : IEntityTypeConfiguration<GameLend>
+    public class GameLendMapping : IEntityTypeConfiguration<GameLendModel>
     {
-        public void Configure(EntityTypeBuilder<GameLend> builder)
+        public void Configure(EntityTypeBuilder<GameLendModel> builder)
         {
 
             builder.Property(c => c.Id)

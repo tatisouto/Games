@@ -1,7 +1,7 @@
 ﻿using FluentValidation.Results;
 using Games.Application.EventSourcedNormalizers;
 using Games.Application.ViewModels;
-using Games.Domain.Entities;
+using Games.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

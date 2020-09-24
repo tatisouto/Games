@@ -2,15 +2,15 @@
 using System;
 using System.Collections.Generic;
 
-namespace Games.Domain.Entities
+namespace Games.Domain.Models
 {
-    public class Person : Entity, IAggregateRoot
+    public class PersonModel : Entity, IAggregateRoot
     {
-        protected Person()
+        protected PersonModel()
         {
 
         }
-        public Person(Guid id, string name, string phone, string email, DateTime created, DateTime? updated)
+        public PersonModel(Guid id, string name, string phone, string email, DateTime created, DateTime? updated)
         {
             Id = id;
             Name = name;
@@ -25,7 +25,7 @@ namespace Games.Domain.Entities
         public string Email { get; private set; }
         public DateTime Created { get; private set; }
         public DateTime? Updated { get; private set; }
-        public virtual IEnumerable<GameLend> GameLend { get; private set; }
+        public virtual IEnumerable<GameLendModel> GameLend { get; private set; }
 
 
     }

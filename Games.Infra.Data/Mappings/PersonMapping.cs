@@ -1,13 +1,13 @@
-﻿using Games.Domain.Entities;
+﻿using Games.Domain.Models;
 using Games.Infra.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Games.Infra.Data.Mappings
 {
-    public class PersonMapping : IEntityTypeConfiguration<Person>
+    public class PersonMapping : IEntityTypeConfiguration<PersonModel>
     {
-        public void Configure(EntityTypeBuilder<Person> builder)
+        public void Configure(EntityTypeBuilder<PersonModel> builder)
         {
             builder.Property(c => c.Id)
               .HasColumnName("Id");

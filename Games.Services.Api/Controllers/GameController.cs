@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Games.Application.Interfaces;
 using Games.Application.ViewModels;
-using Games.Domain.Entities;
+using Games.Domain.Models;
 using Games.Domain.Interfaces.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

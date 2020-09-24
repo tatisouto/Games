@@ -1,4 +1,4 @@
-﻿using Games.Domain.Entities;
+﻿using Games.Domain.Models;
 using NetDevPack.Data;
 using System;
 using System.Collections.Generic;
@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Games.Domain.Interfaces.Repositories
 {
-   public  interface IGameRepository : IRepository<Game>
+   public  interface IGameRepository : IRepository<GameModel>
     {
 
-        Task<Game> GetById(Guid id);      
-        Task<IEnumerable<Game>> GetAll();
+        Task<GameModel> GetById(Guid id);      
+        Task<IEnumerable<GameModel>> GetAll();
 
-        Task<Game> GetByDescription(string description);
+        Task<GameModel> GetByDescription(string description);
 
-        void Add(Game game);
-        void Update(Game game);
-        void Remove(Game game);
+        void Add(GameModel game);
+        void Update(GameModel game);
+        void Remove(GameModel game);
     }
 }

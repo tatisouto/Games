@@ -5,9 +5,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using FluentValidation.Results;
-using Games.Domain.Events;
-using Games.Domain.Interfaces;
-using Games.Domain.Entities;
+using Games.Domain.Models;
 using Games.Domain.Events.Person;
 
 namespace Games.Domain.Commands.Person
@@ -28,7 +26,7 @@ namespace Games.Domain.Commands.Person
         {
             if (!message.IsValid()) return message.ValidationResult;
 
-            var person = new Person(Guid.NewGuid(), message.Name, message.Phone, message.Email, message.Created, message.Updated);
+            var person = new PersonModel(Guid.NewGuid(), message.Name, message.Phone, message.Email, message.Created, message.Updated);
 
 
             if (await _personRepository.GetByEmail(person.Email) != null)
@@ -48,7 +46,7 @@ namespace Games.Domain.Commands.Person
         {
             if (!message.IsValid()) return message.ValidationResult;
 
-            var person = new Person(Guid.NewGuid(), message.Name, message.Phone, message.Email, message.Created, message.Updated);
+            var person = new PersonModel(Guid.NewGuid(), message.Name, message.Phone, message.Email, message.Created, message.Updated);
 
 
             if (await _personRepository.GetByEmail(person.Email) != null)

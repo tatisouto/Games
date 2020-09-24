@@ -1,8 +1,8 @@
-﻿using Games.Domain.Entities;
+﻿using Games.Domain.Models;
 
 namespace Games.Domain.Interfaces.Services
 {
-    public interface IGameLendService : IServiceBase<GameLend>
+    public interface IGameLendService : IServiceBase<GameLendModel>
     {
     }
 }

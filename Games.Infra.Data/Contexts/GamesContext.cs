@@ -1,5 +1,5 @@
 ﻿using FluentValidation.Results;
-using Games.Domain.Entities;
+using Games.Domain.Models;
 using Games.Infra.Data.Mappings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -24,9 +24,9 @@ namespace Games.Infra.Data.Contexts
             ChangeTracker.AutoDetectChangesEnabled = false;
         }
 
-        public DbSet<Game> Games { get; set; }
-        public DbSet<GameLend> GameLends { get; set; }
-        public DbSet<Person> Persons { get; set; }
+        public DbSet<GameModel> Games { get; set; }
+        public DbSet<GameLendModel> GameLends { get; set; }
+        public DbSet<PersonModel> Persons { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -43,12 +43,12 @@ namespace Games.Infra.Data.Contexts
             modelBuilder.ApplyConfiguration(new PersonMapping());
             modelBuilder.ApplyConfiguration(new GameLendMapping());
 
-            modelBuilder.Entity<GameLend>()
+            modelBuilder.Entity<GameLendModel>()
             .HasOne(bc => bc.Games)
             .WithMany(b => b.GameLend)
             .HasForeignKey(bc => bc.IdGame);
 
-            modelBuilder.Entity<GameLend>()
+            modelBuilder.Entity<GameLendModel>()
             .HasOne(bc => bc.Persons)
             .WithMany(b => b.GameLend)
             .HasForeignKey(bc => bc.IdPerson);

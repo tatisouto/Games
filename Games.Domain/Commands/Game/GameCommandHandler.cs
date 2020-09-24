@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using FluentValidation.Results;
 using Games.Domain.Events;
 using Games.Domain.Interfaces;
-using Games.Domain.Entities;
+using Games.Domain.Models;
 using Games.Domain.Events.Person;
 
 namespace Games.Domain.Commands.Game
@@ -27,7 +27,7 @@ namespace Games.Domain.Commands.Game
         {
             if (!message.IsValid()) return message.ValidationResult;
 
-            var game = new Game(Guid.NewGuid(), message.Description, message.Active, message.Created, message.Updated);
+            var game = new GameModel (Guid.NewGuid(), message.Description, message.Active, message.Created, message.Updated);
 
 
             if (await _gameRepository.GetByDescription(game.Description) != null)
@@ -47,7 +47,7 @@ namespace Games.Domain.Commands.Game
         {
             if (!message.IsValid()) return message.ValidationResult;
 
-            var game = new Game(Guid.NewGuid(), message.Description, message.Active, message.Created, message.Updated);
+            var game = new GameModel(Guid.NewGuid(), message.Description, message.Active, message.Created, message.Updated);
 
 
             if (await _gameRepository.GetByDescription(game.Description) != null)

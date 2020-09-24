@@ -1,4 +1,4 @@
-﻿using Games.Domain.Entities;
+﻿using Games.Domain.Models;
 using Games.Domain.Interfaces.Repositories;
 using Games.Infra.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -14,42 +14,42 @@ namespace Games.Infra.Data.Repository
     {
 
         protected readonly GamesContext Db;
-        protected readonly DbSet<GameLend> DbSet;
+        protected readonly DbSet<GameLendModel> DbSet;
 
         public GameLendRepository(GamesContext context)
         {
             Db = context;
-            DbSet = Db.Set<GameLend>();
+            DbSet = Db.Set<GameLendModel>();
         }
 
         public IUnitOfWork UnitOfWork => Db;
 
-        public void Add(GameLend entity)
+        public void Add(GameLendModel entity)
         {
             DbSet.Add(entity);
         }
 
-        public void Remove(GameLend entity)
+        public void Remove(GameLendModel entity)
         {
             DbSet.Remove(entity);
         }
 
-        public void Update(GameLend entity)
+        public void Update(GameLendModel entity)
         {
             DbSet.Update(entity);
         }
 
-        public async Task<IEnumerable<GameLend>> GetAll()
+        public async Task<IEnumerable<GameLendModel>> GetAll()
         {
             return await DbSet.ToListAsync();
         }
 
-        public async Task<GameLend> GetById(Guid id)
+        public async Task<GameLendModel> GetById(Guid id)
         {
             return await DbSet.FindAsync(id);
         }
 
-        public async Task<GameLend> GetByGameId(Guid idGame)
+        public async Task<GameLendModel> GetByGameId(Guid idGame)
         {
             return await DbSet.AsNoTracking().FirstOrDefaultAsync(c => c.IdGame == idGame);
         }

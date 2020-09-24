@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using FluentValidation.Results;
 using Games.Domain.Events.Person;
+using Games.Domain.Models;
 
 namespace Games.Domain.Commands.GameLend
 {
@@ -25,10 +26,10 @@ namespace Games.Domain.Commands.GameLend
         {
             if (!message.IsValid()) return message.ValidationResult;
 
-            var gameLend = new GameLend(Guid.NewGuid(), message.IdGame, message.IdPerson, message.LendOn, message.ReturnedOn, message.Created, message.Updated);
+            var gameLend = new GameLendModel(Guid.NewGuid(), message.IdGame, message.IdPerson, message.LendOn, message.ReturnedOn, message.Created, message.Updated);
+                        
 
-
-            if (await _gameLendRepository.GameIsAvailable(gameLend.IdGame) == false)
+            if ( _gameLendRepository.GameIsAvailable(gameLend.IdGame) == false)
             {
                 AddError("Game já emprestado.");
                 return ValidationResult;
@@ -45,7 +46,7 @@ namespace Games.Domain.Commands.GameLend
         {
             if (!message.IsValid()) return message.ValidationResult;
 
-            var gameLend = new GameLend(Guid.NewGuid(), message.IdGame, message.IdPerson, message.LendOn, message.ReturnedOn, message.Created, message.Updated);
+            var gameLend = new GameLendModel(Guid.NewGuid(), message.IdGame, message.IdPerson, message.LendOn, message.ReturnedOn, message.Created, message.Updated);
 
 
             gameLend.AddDomainEvent(new GameLendRegisteredEvent(gameLend.IdPerson, gameLend.IdGame, gameLend.LendOn, gameLend.ReturnedOn, gameLend.Created, gameLend.Updated));

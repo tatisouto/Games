@@ -1,6 +1,6 @@
 ﻿using FluentValidation.Results;
 using Games.Application.ViewModels;
-using Games.Domain.Entities;
+using Games.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -1,4 +1,4 @@
-﻿using Games.Domain.Entities;
+﻿using Games.Domain.Models;
 using Games.Domain.Interfaces.Repositories;
 using Games.Infra.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -13,17 +13,17 @@ namespace Games.Infra.Data.Repository
     {
 
         protected readonly GamesContext Db;
-        protected readonly DbSet<Person> DbSet;        
+        protected readonly DbSet<PersonModel> DbSet;        
 
         public PersonRepository(GamesContext context)
         {
             Db = context;
-            DbSet = Db.Set<Person>();
+            DbSet = Db.Set<PersonModel>();
         }
 
         public IUnitOfWork UnitOfWork => Db;
 
-        public void Add(Person person)
+        public void Add(PersonModel person)
         {
             DbSet.Add(person);
         }
@@ -33,27 +33,27 @@ namespace Games.Infra.Data.Repository
             Db.Dispose();
         }
 
-        public async Task<IEnumerable<Person>> GetAll()
+        public async Task<IEnumerable<PersonModel>> GetAll()
         {
             return await DbSet.ToListAsync();
         }
 
-        public async Task<Person> GetByEmail(string email)
+        public async Task<PersonModel> GetByEmail(string email)
         {
             return await DbSet.AsNoTracking().FirstOrDefaultAsync(c => c.Email == email);
         }
 
-        public async Task<Person> GetById(Guid id)
+        public async Task<PersonModel> GetById(Guid id)
         {
             return await DbSet.FindAsync(id);
         }
 
-        public void Remove(Person person)
+        public void Remove(PersonModel person)
         {
             DbSet.Remove(person);
         }
 
-        public void Update(Person person)
+        public void Update(PersonModel person)
         {
             DbSet.Update(person);
         }

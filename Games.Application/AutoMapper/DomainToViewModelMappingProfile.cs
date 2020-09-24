@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Games.Application.ViewModels;
-using Games.Domain.Entities;
+using Games.Domain.Models;
 
 namespace Games.Application.AutoMapper
 {
@@ -8,9 +8,9 @@ namespace Games.Application.AutoMapper
     {
         public DomainToViewModelMappingProfile()
         {
-            CreateMap<Game, GameViewModel>();
-            CreateMap<Person, PersonViewModel>();
-            CreateMap<GameLend, GameLendViewModel>();
+            CreateMap<GameModel, GameViewModel>();
+            CreateMap<PersonModel, PersonViewModel>();
+            CreateMap<GameLendModel, GameLendViewModel>();
         }
     }
 }

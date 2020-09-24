@@ -2,11 +2,11 @@
 using System;
 using System.Collections.Generic;
 
-namespace Games.Domain.Entities
+namespace Games.Domain.Models
 {
-    public class GameLend : Entity, IAggregateRoot
+    public class GameLendModel : Entity, IAggregateRoot
     {
-        public GameLend(Guid id, Guid idPerson, Guid idGame,  DateTime lendOn, DateTime? returnedOn, DateTime created, DateTime? updated)
+        public GameLendModel(Guid id, Guid idPerson, Guid idGame,  DateTime lendOn, DateTime? returnedOn, DateTime created, DateTime? updated)
         {
             Id = id;
             IdPerson = idPerson;
@@ -17,7 +17,7 @@ namespace Games.Domain.Entities
             Updated = updated;
         }
 
-        public GameLend()
+        public GameLendModel()
         {
 
         }
@@ -29,8 +29,8 @@ namespace Games.Domain.Entities
         public DateTime Created { get; private set; }
         public DateTime? Updated { get; private set; }
 
-        public virtual Person Persons { get; private set; }
-        public virtual Game Games { get; private set; }
+        public virtual PersonModel Persons { get; private set; }
+        public virtual GameModel Games { get; private set; }
        
     }
 }

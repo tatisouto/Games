@@ -1,5 +1,5 @@
 ﻿
-using Games.Domain.Entities;
+using Games.Domain.Models;
 using NetDevPack.Data;
 using System;
 using System.Collections.Generic;
@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace Games.Domain.Interfaces.Repositories
 {
-    public interface IGameLendRepository : IRepository<GameLend>
+    public interface IGameLendRepository : IRepository<GameLendModel>
     {
-        Task<GameLend> GetById(Guid id);
-        Task<IEnumerable<GameLend>> GetAll();
-        Task<GameLend> GetByGameId(Guid idGame);
+        Task<GameLendModel> GetById(Guid id);
+        Task<IEnumerable<GameLendModel>> GetAll();
+        Task<GameLendModel> GetByGameId(Guid idGame);
         bool GameIsAvailable(Guid idGame);
 
-        void Add(GameLend gameLend);
-        void Update(GameLend gameLend);
-        void Remove(GameLend gameLend);
+        void Add(GameLendModel gameLend);
+        void Update(GameLendModel gameLend);
+        void Remove(GameLendModel gameLend);
     }
 }
